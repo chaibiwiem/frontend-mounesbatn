@@ -200,7 +200,7 @@ function VideosSection({ maxVideos = Infinity, planLabel = '', requiredPlan = nu
         <span className="text-sm text-gray-600">Vignette personnalisée (optionnel)</span>
         {thumbnailFile ? (
           <>
-            <img
+            <img loading="lazy" decoding="async"
               src={URL.createObjectURL(thumbnailFile)}
               alt=""
               className="h-10 w-10 rounded object-cover"

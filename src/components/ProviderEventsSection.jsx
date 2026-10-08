@@ -42,7 +42,7 @@ function ProviderEventsSection({ events, onInterested }) {
             className="overflow-hidden rounded-xl border border-[#E8EEF3] bg-white shadow-sm transition hover:border-[#4E8BC4]"
           >
             {event.imageUrl ? (
-              <img src={event.imageUrl} alt="" className="h-40 w-full object-cover" />
+              <img loading="lazy" decoding="async" src={event.imageUrl} alt="" className="h-40 w-full object-cover" />
             ) : (
               <div className="flex h-40 w-full items-center justify-center bg-[#FFF5F8] text-[#FF99BE]">
                 <IconCalendar className="h-10 w-10" />

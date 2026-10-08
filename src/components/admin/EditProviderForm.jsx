@@ -314,7 +314,7 @@ function EditProviderForm({ listing, onClose, onSuccess }) {
               )}
             </div>
             {cinPreviewUrl && (
-              <img src={cinPreviewUrl} alt="Carte CIN" className="mt-2 max-h-64 rounded-lg border border-gray-200" />
+              <img loading="lazy" decoding="async" src={cinPreviewUrl} alt="Carte CIN" className="mt-2 max-h-64 rounded-lg border border-gray-200" />
             )}
             {cinError && <p className="text-sm text-red-600">{cinError}</p>}
             <p className="text-xs text-gray-500">

@@ -39,7 +39,7 @@ function StarRatingInput({ label, value, onChange }) {
 function ProviderThumbnail({ listing, title, className }) {
   const image = listing?.images?.[0]?.url;
   return image ? (
-    <img src={image} alt={title} className={className} />
+    <img loading="lazy" decoding="async" src={image} alt={title} className={className} />
   ) : (
     <div className={`${className} flex items-center justify-center bg-gray-100 text-gray-300`}>
       <IconImage className="h-8 w-8" />
@@ -291,7 +291,7 @@ function ReviewForm({ bookingId, listing, onClose, onSuccess }) {
                     <div className="mt-3 flex flex-wrap gap-2">
                       {photos.map((file, i) => (
                         <div key={i} className="relative h-16 w-16 overflow-hidden rounded-lg border border-gray-200">
-                          <img src={URL.createObjectURL(file)} alt="" className="h-full w-full object-cover" />
+                          <img loading="lazy" decoding="async" src={URL.createObjectURL(file)} alt="" className="h-full w-full object-cover" />
                           <button
                             type="button"
                             onClick={() => removePhoto(i)}

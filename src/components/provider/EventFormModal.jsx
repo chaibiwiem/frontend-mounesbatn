@@ -160,7 +160,7 @@ function EventFormModal({ event, defaultLocation, onSave, onCancel }) {
                 className="mt-1 text-sm"
               />
               {event?.imageUrl && !image && (
-                <img src={event.imageUrl} alt="" className="mt-2 h-24 w-full rounded-lg object-cover" />
+                <img loading="lazy" decoding="async" src={event.imageUrl} alt="" className="mt-2 h-24 w-full rounded-lg object-cover" />
               )}
             </div>
 

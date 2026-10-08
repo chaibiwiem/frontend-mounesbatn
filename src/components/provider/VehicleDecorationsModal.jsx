@@ -114,7 +114,7 @@ function VehicleDecorationsModal({ vehicle, onClose, onChanged }) {
               className="flex items-center gap-3 rounded-xl border border-gray-100 p-3"
             >
               {decoration.imageUrl ? (
-                <img src={decoration.imageUrl} alt="" className="h-14 w-20 shrink-0 rounded-lg object-cover" />
+                <img loading="lazy" decoding="async" src={decoration.imageUrl} alt="" className="h-14 w-20 shrink-0 rounded-lg object-cover" />
               ) : (
                 <div className="flex h-14 w-20 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-gray-300">
                   <IconFlower className="h-6 w-6" />

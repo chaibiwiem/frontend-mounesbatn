@@ -216,7 +216,7 @@ function GalleryTab() {
               {images.map((image, index) => (
                 <div key={image.id} className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
                   <div className="relative aspect-square bg-gray-100">
-                    <img src={image.url} alt="" className="h-full w-full object-cover" />
+                    <img loading="lazy" decoding="async" src={image.url} alt="" className="h-full w-full object-cover" />
                     {image.isPrimary && (
                       <span className="absolute left-2 top-2 rounded-full bg-rose-600 px-2 py-0.5 text-xs font-semibold text-white">
                         Principale

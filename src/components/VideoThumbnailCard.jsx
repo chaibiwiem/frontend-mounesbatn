@@ -8,7 +8,7 @@ function VideoThumbnailCard({ video, onPlay }) {
       className="group relative block aspect-square w-full overflow-hidden rounded-2xl bg-gray-900"
     >
       {video.thumbnailUrl ? (
-        <img
+        <img loading="lazy" decoding="async"
           src={video.thumbnailUrl}
           alt=""
           className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"

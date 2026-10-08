@@ -89,7 +89,7 @@ function DashboardLayout({ title, tabs, activeTab, onTabChange, logoUrl, provide
       <aside className="flex w-full shrink-0 flex-col border-b border-gray-100 bg-white lg:w-64 lg:border-b-0 lg:border-r">
         <div className="flex items-center gap-3 px-5 py-3 lg:flex-col lg:gap-2 lg:py-6 lg:text-center">
           {logoUrl ? (
-            <img
+            <img loading="lazy" decoding="async"
               src={logoUrl}
               alt={providerName || 'Logo'}
               className="h-12 w-12 shrink-0 rounded-full border border-gray-100 object-cover shadow-sm lg:h-16 lg:w-16"

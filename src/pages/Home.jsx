@@ -22,7 +22,7 @@ function PromoImage({ src, className = '' }) {
   }
 
   return (
-    <img src={src} alt="" onError={() => setFailed(true)} className={`object-cover ${className}`} />
+    <img loading="lazy" decoding="async" src={src} alt="" onError={() => setFailed(true)} className={`object-cover ${className}`} />
   );
 }
 
@@ -172,7 +172,7 @@ function Home() {
         {/* Mobile/tablette : photo courte en haut, texte + recherche en
             dessous sur fond blanc, empiles. */}
         <div className="lg:hidden">
-          <img src="/banner.jpeg" alt="" className="h-56 w-full object-cover sm:h-72" />
+          <img loading="lazy" decoding="async" src="/banner.jpeg" alt="" className="h-56 w-full object-cover sm:h-72" />
           <div className="flex flex-col justify-center px-4 pt-10 pb-6 sm:px-8 sm:py-14">
             <h1
               className="text-gray-900"
@@ -213,7 +213,7 @@ function Home() {
               une hauteur figee (min-h) rendait la photo disproportionnee des
               que la colonne retrecissait (lg). */}
           <div className="relative overflow-hidden rounded-l-[100px]">
-            <img src="/banner.jpeg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <img loading="lazy" decoding="async" src="/banner.jpeg" alt="" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </div>
       </div>

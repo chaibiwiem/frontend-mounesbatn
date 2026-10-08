@@ -43,12 +43,12 @@ function MediaTile({ media, className = '', onClick }) {
     >
       {isVideo ? (
         media.thumbnailUrl ? (
-          <img src={media.thumbnailUrl} alt="" className="h-full w-full object-cover" />
+          <img loading="lazy" decoding="async" src={media.thumbnailUrl} alt="" className="h-full w-full object-cover" />
         ) : (
           <div className="h-full w-full bg-gradient-to-br from-gray-800 to-black" />
         )
       ) : (
-        <img src={media.url} alt="" className="h-full w-full object-cover" />
+        <img loading="lazy" decoding="async" src={media.url} alt="" className="h-full w-full object-cover" />
       )}
       {isVideo && (
         <span className="absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow transition group-hover:bg-white">
@@ -384,7 +384,7 @@ function ListingDetail() {
         <aside className="rounded-2xl border border-gray-100 px-7 py-5 shadow-xl shadow-gray-200/60">
           <div className="mb-4 flex items-center gap-3 border-b border-gray-100 pb-4">
             {listing.logoUrl ? (
-              <img
+              <img loading="lazy" decoding="async"
                 src={listing.logoUrl}
                 alt={listing.title}
                 className="h-14 w-14 shrink-0 rounded-full border border-gray-100 object-cover"

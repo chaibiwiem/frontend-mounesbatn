@@ -1,26 +1,31 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import VerifyEmail from './pages/VerifyEmail';
-import SearchResults from './pages/SearchResults';
-import CategoryLanding from './pages/CategoryLanding';
-import PrestatairesLanding from './pages/PrestatairesLanding';
-import Contact from './pages/Contact';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CookiePolicy from './pages/CookiePolicy';
-import LegalCenter from './pages/LegalCenter';
-import HelpCenter from './pages/HelpCenter';
-import ListingDetail from './pages/ListingDetail';
-import ProviderDashboard from './pages/ProviderDashboard';
-import ClientDashboard from './pages/ClientDashboard';
-import AdminDashboard from './pages/AdminDashboard';
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+const VerifyEmail = lazy(() => import('./pages/VerifyEmail'));
+const SearchResults = lazy(() => import('./pages/SearchResults'));
+const CategoryLanding = lazy(() => import('./pages/CategoryLanding'));
+const PrestatairesLanding = lazy(() => import('./pages/PrestatairesLanding'));
+const Contact = lazy(() => import('./pages/Contact'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
+const LegalCenter = lazy(() => import('./pages/LegalCenter'));
+const HelpCenter = lazy(() => import('./pages/HelpCenter'));
+const ListingDetail = lazy(() => import('./pages/ListingDetail'));
+const ProviderDashboard = lazy(() => import('./pages/ProviderDashboard'));
+const ClientDashboard = lazy(() => import('./pages/ClientDashboard'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+
+// Pages chargees a la demande (code splitting) : la page d'accueil reste dans
+// le bundle principal, les autres - surtout les dashboards - ne sont
+// telechargees que lorsqu'on les ouvre.
 
 function AppShell() {
   const location = useLocation();
@@ -31,6 +36,7 @@ function AppShell() {
   return (
     <>
       {!hideNavbar && <Navbar />}
+      <Suspense fallback={<div className="min-h-[60vh]" />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -77,6 +83,7 @@ function AppShell() {
           }
         />
       </Routes>
+      </Suspense>
       {!hideNavbar && <Footer />}
     </>
   );

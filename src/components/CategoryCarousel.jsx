@@ -58,7 +58,7 @@ function CategoryCarousel({ categories, onSelect }) {
             >
               <span className="flex h-[95px] w-[95px] items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-rose-100 to-rose-200 shadow-sm ring-1 ring-rose-100 transition duration-300 ease-out group-hover:scale-105 group-hover:shadow-lg group-hover:ring-rose-300 sm:h-[140px] sm:w-[140px] lg:h-[170px] lg:w-[170px]">
                 {cat.imageUrl ? (
-                  <img src={cat.imageUrl} alt={cat.name} className="h-full w-full object-cover" />
+                  <img loading="lazy" decoding="async" src={cat.imageUrl} alt={cat.name} className="h-full w-full object-cover" />
                 ) : (
                   <CategoryIcon
                     category={cat}

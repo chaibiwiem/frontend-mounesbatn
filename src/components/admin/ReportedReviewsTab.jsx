@@ -68,7 +68,7 @@ function ReportedReviewsTab() {
               {review.photos?.length > 0 && (
                 <div className="mt-2 flex gap-2">
                   {review.photos.map((photo) => (
-                    <img key={photo.id} src={photo.url} alt="" className="h-16 w-16 rounded-lg object-cover" />
+                    <img loading="lazy" decoding="async" key={photo.id} src={photo.url} alt="" className="h-16 w-16 rounded-lg object-cover" />
                   ))}
                 </div>
               )}

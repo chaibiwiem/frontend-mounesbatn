@@ -141,7 +141,7 @@ function CategoryForm({ category, parentCategory, onClose, onSuccess }) {
         {isEdit && (
           <div className="mt-4 flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4">
             {imageUrl ? (
-              <img
+              <img loading="lazy" decoding="async"
                 src={imageUrl}
                 alt={category.name}
                 className="h-16 w-16 shrink-0 rounded-full border border-gray-200 object-cover"
@@ -189,7 +189,7 @@ function CategoryForm({ category, parentCategory, onClose, onSuccess }) {
         {isEdit && (
           <div className="mt-3 flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4">
             {iconUrl ? (
-              <img
+              <img loading="lazy" decoding="async"
                 src={iconUrl}
                 alt=""
                 className="h-16 w-16 shrink-0 rounded-full border border-gray-200 bg-white object-contain p-2"

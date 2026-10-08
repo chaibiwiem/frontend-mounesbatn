@@ -18,7 +18,7 @@ function PhotoGalleryModal({ images, title, onClose }) {
       <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-8">
         <div className="mx-auto max-w-4xl">
           {images[0] && (
-            <img
+            <img loading="lazy" decoding="async"
               src={images[0].url}
               alt={title}
               className="w-full rounded-xl object-cover"
@@ -27,7 +27,7 @@ function PhotoGalleryModal({ images, title, onClose }) {
           {images.length > 1 && (
             <div className="mt-3 grid grid-cols-2 gap-3">
               {images.slice(1).map((img) => (
-                <img
+                <img loading="lazy" decoding="async"
                   key={img.id}
                   src={img.url}
                   alt=""

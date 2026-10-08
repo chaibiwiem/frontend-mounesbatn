@@ -53,7 +53,7 @@ function DecorationPickerModal({ decorations, selectedId, vehicleLabel, onConfir
                   </span>
 
                   {decoration.imageUrl ? (
-                    <img src={decoration.imageUrl} alt="" className="h-16 w-20 shrink-0 rounded-lg object-cover" />
+                    <img loading="lazy" decoding="async" src={decoration.imageUrl} alt="" className="h-16 w-20 shrink-0 rounded-lg object-cover" />
                   ) : (
                     <div className="flex h-16 w-20 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-gray-300">
                       <IconFlower className="h-6 w-6" />

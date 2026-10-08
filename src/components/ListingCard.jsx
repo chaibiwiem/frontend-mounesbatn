@@ -32,7 +32,7 @@ function ListingCard({ listing, onUnfavorite, hideContactButton = false }) {
       >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
         {activeImage ? (
-          <img
+          <img loading="lazy" decoding="async"
             src={activeImage.url}
             alt={listing.title}
             className="h-full w-full object-cover transition group-hover:scale-105"

@@ -138,7 +138,7 @@ function Navbar() {
       <nav className="sticky top-0 z-10 border-b border-gray-100 bg-white/90 backdrop-blur">
         <div className="flex w-full items-center justify-between !px-[50px] py-3">
           <Link to="/" className="flex items-center">
-            <img src="/Mounesba_Logo_Horizontal.svg" alt="Mounesba" className="h-14 w-auto" />
+            <img loading="lazy" decoding="async" src="/Mounesba_Logo_Horizontal.svg" alt="Mounesba" className="h-14 w-auto" />
           </Link>
 
           <div className="hidden items-center gap-9 lg:flex">

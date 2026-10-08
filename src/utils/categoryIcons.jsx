@@ -47,7 +47,7 @@ export const DEFAULT_CATEGORY_ICON = IconBuilding;
 // predefinie associee au mot-cle cat.icon (CATEGORY_ICONS ci-dessus).
 export function CategoryIcon({ category, className = 'h-5 w-5' }) {
   if (category?.iconUrl) {
-    return <img src={category.iconUrl} alt="" className={`${className} object-contain`} />;
+    return <img loading="lazy" decoding="async" src={category.iconUrl} alt="" className={`${className} object-contain`} />;
   }
   const Icon = CATEGORY_ICONS[category?.icon] || DEFAULT_CATEGORY_ICON;
   return <Icon className={className} />;

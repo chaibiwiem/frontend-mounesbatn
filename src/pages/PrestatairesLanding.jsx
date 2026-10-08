@@ -25,7 +25,7 @@ function StaticCategoryImage({ src, category, className = '' }) {
   }
 
   return (
-    <img src={src} alt="" onError={() => setFailed(true)} className={`object-cover ${className}`} />
+    <img loading="lazy" decoding="async" src={src} alt="" onError={() => setFailed(true)} className={`object-cover ${className}`} />
   );
 }
 

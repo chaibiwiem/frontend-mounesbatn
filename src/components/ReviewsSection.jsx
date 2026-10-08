@@ -30,7 +30,7 @@ function ReviewPhotoMosaic({ photos }) {
     return (
       <div className="mt-4 flex gap-2">
         {workingPhotos.slice(0, 4).map((photo) => (
-          <img
+          <img loading="lazy" decoding="async"
             key={photo.id}
             src={photo.url}
             alt=""
@@ -46,26 +46,26 @@ function ReviewPhotoMosaic({ photos }) {
 
   return (
     <div className="mt-4 grid h-56 grid-cols-3 grid-rows-2 gap-2 overflow-hidden rounded-2xl">
-      <img
+      <img loading="lazy" decoding="async"
         src={workingPhotos[0].url}
         alt=""
         onError={() => markBroken(workingPhotos[0].id)}
         className="col-span-1 row-span-2 h-full w-full object-cover"
       />
-      <img
+      <img loading="lazy" decoding="async"
         src={workingPhotos[1].url}
         alt=""
         onError={() => markBroken(workingPhotos[1].id)}
         className="col-start-2 h-full w-full object-cover"
       />
-      <img
+      <img loading="lazy" decoding="async"
         src={workingPhotos[2].url}
         alt=""
         onError={() => markBroken(workingPhotos[2].id)}
         className="col-start-3 h-full w-full object-cover"
       />
       <div className="relative col-start-2 col-span-2 row-start-2">
-        <img
+        <img loading="lazy" decoding="async"
           src={workingPhotos[3].url}
           alt=""
           onError={() => markBroken(workingPhotos[3].id)}

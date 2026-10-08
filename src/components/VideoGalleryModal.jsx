@@ -20,7 +20,7 @@ function VideoTile({ video, playing, onPlay, large }) {
       ) : (
         <button type="button" onClick={onPlay} className="group relative block h-full w-full">
           {video.thumbnailUrl ? (
-            <img
+            <img loading="lazy" decoding="async"
               src={video.thumbnailUrl}
               alt=""
               className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"

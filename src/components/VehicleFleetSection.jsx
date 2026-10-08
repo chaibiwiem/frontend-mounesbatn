@@ -36,7 +36,7 @@ function VehicleFleetSection({ vehicles, selectedVehicleId, onChooseVehicle }) {
               }`}
             >
               {vehicle.imageUrl ? (
-                <img src={vehicle.imageUrl} alt="" className="h-40 w-full object-cover" />
+                <img loading="lazy" decoding="async" src={vehicle.imageUrl} alt="" className="h-40 w-full object-cover" />
               ) : (
                 <div className="flex h-40 w-full items-center justify-center bg-gray-50 text-gray-300">
                   <IconCar className="h-10 w-10" />

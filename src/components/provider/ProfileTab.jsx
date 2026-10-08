@@ -177,7 +177,7 @@ function ProfileTab({ logoUrl: logoUrlProp, onLogoChange }) {
 
       <div className="mt-4 flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4">
         {logoUrl ? (
-          <img
+          <img loading="lazy" decoding="async"
             src={logoUrl}
             alt="Logo"
             className="h-16 w-16 shrink-0 rounded-full border border-gray-200 object-cover"
