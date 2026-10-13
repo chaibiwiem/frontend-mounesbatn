@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { compressFormDataImages } from '../utils/compressImage';
 
 const TOKEN_KEY = 'farahbooking_token';
 const REFRESH_TOKEN_KEY = 'farahbooking_refresh_token';
@@ -8,10 +9,15 @@ const api = axios.create({
   baseURL: '/api',
 });
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
   const token = localStorage.getItem(TOKEN_KEY);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
+  }
+  // Uploads : photos compressees avant envoi (limite de 4,5 Mo par requete
+  // sur Vercel), voir utils/compressImage.js.
+  if (config.data instanceof FormData) {
+    config.data = await compressFormDataImages(config.data);
   }
   return config;
 });
@@ -33,6 +39,15 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     const isAuthRoute = originalRequest?.url?.startsWith('/auth/');
+
+    // 413 renvoye par Vercel lui-meme (corps > 4,5 Mo) : pas de JSON
+    // { message }, les ecrans afficheraient un "Echec" generique.
+    if (error.response?.status === 413) {
+      error.response.data = {
+        message: 'Fichier trop volumineux (4,5 Mo maximum par envoi). Réduisez sa taille ou envoyez-le seul.',
+      };
+      return Promise.reject(error);
+    }
 
     if (error.response?.status !== 401 || originalRequest._retry || isAuthRoute) {
       return Promise.reject(error);
