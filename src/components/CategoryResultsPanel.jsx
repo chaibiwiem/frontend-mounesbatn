@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { searchListings, getCategories, getCities } from '../services/listingService';
 import ListingCard from './ListingCard';
 import CategorySearchBar from './CategorySearchBar';
@@ -158,13 +158,16 @@ function FiltersIcon({ className = '' }) {
 // page categorie ayant deja son propre bandeau).
 function CategoryResultsPanel({ lockedCategorySlug = '', showHeader = false }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [categories, setCategories] = useState([]);
   const [cities, setCities] = useState([]);
   const [data, setData] = useState({ results: [], pagination: { page: 1, totalPages: 1 } });
   const [loading, setLoading] = useState(true);
   // Mobile/tablette (< lg) : filtres dans un panneau du bas, ouvert par le
   // bouton "Filtres". Desktop : sidebar toujours visible.
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  // Reste ouvert apres un passage page categorie -> /search (voir leaveLockedCategory).
+  const [filtersOpen, setFiltersOpen] = useState(Boolean(location.state?.filtersOpen));
 
   // Panneau ouvert : la page derriere ne defile plus ; Echap le referme.
   useEffect(() => {
@@ -233,15 +236,34 @@ function CategoryResultsPanel({ lockedCategorySlug = '', showHeader = false }) {
     fetchResults();
   }, [fetchResults]);
 
+  // Page categorie (lockedCategorySlug) : sans parametre "category" dans l'URL,
+  // la categorie de la page s'applique d'office. Choisir une autre categorie,
+  // "Toutes les categories" ou reinitialiser n'aurait donc aucun effet sur
+  // place : on bascule vers la recherche generale /search, qui n'impose rien.
+  const leaveLockedCategory = (next) => {
+    const query = next.toString();
+    navigate(query ? `/search?${query}` : '/search', { state: { filtersOpen } });
+  };
+
   const updateFilter = (key, value) => {
     const next = new URLSearchParams(searchParams);
     if (value) next.set(key, value);
     else next.delete(key);
     next.delete('page');
+    if (key === 'category' && lockedCategorySlug && value !== lockedCategorySlug) {
+      leaveLockedCategory(next);
+      return;
+    }
     setSearchParams(next);
   };
 
-  const clearAllFilters = () => setSearchParams(new URLSearchParams());
+  const clearAllFilters = () => {
+    if (lockedCategorySlug) {
+      leaveLockedCategory(new URLSearchParams());
+      return;
+    }
+    setSearchParams(new URLSearchParams());
+  };
 
   const goToPage = (page) => {
     const next = new URLSearchParams(searchParams);
