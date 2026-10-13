@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    background-color: #ffffff;
+  }
+
+  /* Contrairement a <a>, un <button> garde le curseur fleche par defaut du
+     navigateur - le site en utilise tres largement pour des elements
+     purement cliquables (onglets, pastilles de categorie, menus...), d'ou
+     cette regle globale plutot qu'une classe a repeter partout. */
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+  }
+
+  /* !important : impose #222222 et Roboto sur TOUT <p>, y compris ceux qui
+     portent deja une classe utilitaire Tailwind (text-gray-500, text-rose-600,
+     font-serif...), qui gagneraient sinon sur cette regle de @layer base. */
+  p {
+    font-family: 'Roboto', sans-serif !important;
+    color: #222222 !important;
+  }
+}
+
+/* Champ invalide (utils/formValidation.js) : bordure rouge, quel que soit le
+   style du champ (encadre ou souligne). */
+input[aria-invalid='true'],
+select[aria-invalid='true'],
+textarea[aria-invalid='true'] {
+  border-color: #dc2626 !important;
+  --tw-ring-color: #dc2626 !important;
+}
