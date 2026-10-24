@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IconInstagram, IconFacebook, IconTikTok } from './icons';
+import { IconInstagram, IconFacebook, IconTikTok, IconPhone } from './icons';
 import { getCategories } from '../services/listingService';
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from '../utils/contact';
 
 // Une section = un accordeon replie sur mobile/tablette (titre + "+"/"-",
 // contenu masque tant que non ouvert - comme la reference fournie), une
@@ -154,6 +155,13 @@ function Footer() {
                 <IconTikTok className="h-4 w-4" />
               </a>
             </div>
+            <a
+              href={CONTACT_PHONE_HREF}
+              className="mt-4 flex items-center gap-2 text-sm text-gray-600 hover:text-rose-600"
+            >
+              <IconPhone className="h-4 w-4" />
+              {CONTACT_PHONE_DISPLAY}
+            </a>
           </FooterSection>
         </div>
 

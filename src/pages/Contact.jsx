@@ -1,5 +1,14 @@
-import { IconMail, IconClock, IconInstagram, IconFacebook, IconTikTok } from '../components/icons';
+import {
+  IconMail,
+  IconClock,
+  IconInstagram,
+  IconFacebook,
+  IconTikTok,
+  IconPhone,
+  IconWhatsapp,
+} from '../components/icons';
 import useDocumentMeta from '../hooks/useDocumentMeta';
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF, CONTACT_WHATSAPP_HREF } from '../utils/contact';
 
 const CONTACT_EMAIL = 'contact@mounesba.tn';
 
@@ -39,6 +48,34 @@ function Contact() {
           <div>
             <p className="text-sm text-gray-500">Email</p>
             <p className="font-medium text-gray-900">{CONTACT_EMAIL}</p>
+          </div>
+        </a>
+
+        <a
+          href={CONTACT_PHONE_HREF}
+          className="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:border-rose-300 hover:bg-rose-50"
+        >
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+            <IconPhone className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="text-sm text-gray-500">Téléphone</p>
+            <p className="font-medium text-gray-900">{CONTACT_PHONE_DISPLAY}</p>
+          </div>
+        </a>
+
+        <a
+          href={CONTACT_WHATSAPP_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:border-rose-300 hover:bg-rose-50"
+        >
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+            <IconWhatsapp className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="text-sm text-gray-500">WhatsApp</p>
+            <p className="font-medium text-gray-900">{CONTACT_PHONE_DISPLAY}</p>
           </div>
         </a>
 
